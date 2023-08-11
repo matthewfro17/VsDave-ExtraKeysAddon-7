@@ -443,6 +443,9 @@ class PlayState extends MusicBeatState
 
 	var noteWidth:Float = 0;
 
+	public static var bambiVoice:Bool = false;
+	var isBambi:Bool = false;
+
 	public static var shaggyVoice:Bool = false;
 	var isShaggy:Bool = false;
 	var legs:FlxSprite;
@@ -1018,7 +1021,8 @@ class PlayState extends MusicBeatState
 		bfGroup.add(boyfriend);
 
 		isShaggy = boyfriend.curCharacter == 'shaggy' || boyfriend.curCharacter == 'supershaggy' || boyfriend.curCharacter == 'godshaggy' || boyfriend.curCharacter == 'redshaggy';
-
+                isBambi = boyfriend.curCharacter == 'untitled';
+				
 		switch (stageCheck)
 		{
 			case 'desktop':
@@ -1140,6 +1144,7 @@ class PlayState extends MusicBeatState
 		dadStrums = new FlxTypedGroup<StrumNote>();
 
 		shaggyVoice = isShaggy && ['warmup', 'house', 'insanity', 'polygonized', 'blocked', 'corn-theft', 'maze', 'splitathon', 'shredder', 'greetings', 'interdimensional', 'rano', 'bonus-song', 'bot-trot', 'escape-from-california', 'adventure', 'mealie', 'indignancy', 'memory', 'roofs', 'supernovae', 'glitch', 'master', 'cheating', 'unfairness', 'kabunga', 'recursed', 'exploitation'].contains(SONG.song.toLowerCase());
+                bambiyVoice = isBambi && ['recursed'].contains(SONG.song.toLowerCase());
 
 		generateSong(SONG.song);
 
